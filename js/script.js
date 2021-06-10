@@ -14,7 +14,6 @@ function palindromo(pali){
 
 }
 
-
 if(palindromo(word)){
     output.innerText += "\n La parola "+ word +" è palindroma" ;
 } else {
@@ -24,19 +23,28 @@ if(palindromo(word)){
 
 var num = parseInt( prompt("Ora giochiamo a pari o dispari, scegli un numero da 1 a 5"));
 
-
-while(num > 5 || Number.isNaN(num)){
+while(num > 5 || num < 1 || Number.isNaN(num)){
     num = parseInt(prompt("Attento, scegli un numero da 1 a 5"));
 }
 
-var pDWord =  prompt("Scegli pari o dispari");
+var flag = 0;
 
-if (pDWord === "pari"||pDWord === "Pari"|| pDWord === "P"|| pDWord === "p"){
-    var pari = 0;
-} else {
-    var pari = 1;
+while(flag==0){
+    var pDWord =  prompt("Scegli pari o dispari");
+    
+    if (pDWord === "pari"||pDWord === "Pari"|| pDWord === "P"|| pDWord === "p"){
+        var pari = 0;
+        flag = 1;
+    } else {
+        if (pDWord === "dispari"||pDWord === "Dispari"|| pDWord === "D"|| pDWord === "d"){
+            var pari = 1;
+            flag = 1;
+        }
+    }
 }
 
+
+//Generatore di numeri random tra 1 e 5
 function getRandomNumber(){
     return (Math.floor(Math.random() * 5)+1);
 }
@@ -44,6 +52,7 @@ function getRandomNumber(){
 var p2Num = getRandomNumber();
 var total = num + p2Num;
 
+// Funzione che prende il totale e la scelta tra pari o dispari
 function winner(a, c){
     if (a%2 == c) {
         output.innerText += "\n Hai vinto!!" ;
